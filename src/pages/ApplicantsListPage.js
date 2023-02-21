@@ -5,7 +5,7 @@ export const ApplicantsListPage = () => {
         <div className="pageContainer">
             <div className="pageBanner">
                 <h1 className="pageHeader">Applicants</h1>
-                <button className="getNewButton" onClick={openOrClose}>
+                <button className="getNewButton" onClick={() => console.log('Retrieved new candidate...')}>
                     Get new applicant
                 </button>
             </div>
