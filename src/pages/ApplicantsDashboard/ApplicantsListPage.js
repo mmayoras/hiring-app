@@ -9,9 +9,9 @@ export const ApplicantsListPage = ({ applicantsList, setApplicantsList }) => {
     const [showApplicantModal, setShowApplicantModal] = useState(false);
     const [currentApplicantIndex, setCurrentApplicantIndex] = useState(0);
 
-    const approveOrDenyApplicantAndClose = (isApproved) => {
+    const approveOrRejectApplicantAndClose = (isApproved) => {
         const newApplicantList = applicantsList.slice();
-        newApplicantList[currentApplicantIndex].status = isApproved ? 'Approved' : 'Denied';
+        newApplicantList[currentApplicantIndex].status = isApproved ? 'Approved' : 'Rejected';
         setApplicantsList(newApplicantList);
         setShowApplicantModal(false);
     }
@@ -22,7 +22,7 @@ export const ApplicantsListPage = ({ applicantsList, setApplicantsList }) => {
                 <ApplicantDetailsModal
                     applicantDetails={applicantsList[currentApplicantIndex]}
                     close={setShowApplicantModal}
-                    submit={approveOrDenyApplicantAndClose}
+                    submit={approveOrRejectApplicantAndClose}
                 />
             }
             <div className="tableContainer">

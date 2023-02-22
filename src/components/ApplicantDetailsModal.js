@@ -15,7 +15,7 @@ export const ApplicantDetailsModal = ({ applicantDetails, close, submit }) => {
                     <img src={picture} alt="Applicant Photo" />
                 </div>
                 <div className="actionButtons">
-                    <button onClick={() => submit(false)}>Deny</button>
+                    <button onClick={() => submit(false)}>Reject</button>
                     <button onClick={() => submit(true)}>Approve</button>
                 </div>
             </div>
