@@ -1,3 +1,5 @@
+import './ApplicantDetailsModal.css';
+
 export const ApplicantDetailsModal = ({ applicantDetails }) => {
     const { name, picture } = applicantDetails;
     const fullName = !!name ?
