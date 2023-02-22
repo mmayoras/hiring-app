@@ -1,8 +1,10 @@
-import { GET_CANDIDATE_ENDPOINT } from "../constants/appConstants";
+import { GET_RANDOM_USER_ENDPOINT } from "../constants/appConstants";
 
-export const getNewCandidate = async () => {
-    const candidate = await fetch(GET_CANDIDATE_ENDPOINT)
+export const getNewApplicant = async () => {
+    const { results } = await fetch(GET_RANDOM_USER_ENDPOINT)
         .then((response) => response.json());
 
-    return candidate;
+    const newApplicant = !!results && results.length > 0 ? results[0] : null;
+
+    return newApplicant;
 }

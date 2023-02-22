@@ -1,4 +1,4 @@
-import { ApplicantsListPage } from './pages/ApplicantsListPage';
+import { ApplicantsListPage } from './pages/ApplicantsDashboard/ApplicantsListPage';
 import './App.css';
 
 function App() {

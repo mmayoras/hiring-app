@@ -1,1 +1,1 @@
-export const GET_CANDIDATE_ENDPOINT = 'https://randomuser.me/api/';
+export const GET_RANDOM_USER_ENDPOINT = 'https://randomuser.me/api/';
