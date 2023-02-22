@@ -5,13 +5,26 @@ import { ApplicantDetailsModal } from '../../components/ApplicantDetailsModal';
 
 import './ApplicantListPage.css';
 
-export const ApplicantsListPage = ({ applicantsList }) => {
+export const ApplicantsListPage = ({ applicantsList, setApplicantsList }) => {
     const [showApplicantModal, setShowApplicantModal] = useState(false);
-    const [currentApplicant, setCurrentApplicant] = useState(0);
+    const [currentApplicantIndex, setCurrentApplicantIndex] = useState(0);
+
+    const approveOrDenyApplicantAndClose = (isApproved) => {
+        const newApplicantList = applicantsList.slice();
+        newApplicantList[currentApplicantIndex].status = isApproved ? 'Approved' : 'Denied';
+        setApplicantsList(newApplicantList);
+        setShowApplicantModal(false);
+    }
 
     return (
         <div className="pageContainer">
-            {showApplicantModal && <ApplicantDetailsModal applicantDetails={applicantsList[currentApplicant]} />}
+            {showApplicantModal &&
+                <ApplicantDetailsModal
+                    applicantDetails={applicantsList[currentApplicantIndex]}
+                    close={setShowApplicantModal}
+                    submit={approveOrDenyApplicantAndClose}
+                />
+            }
             <div className="tableContainer">
                 <div className="tableHeader">
                     <p className="columnTitle">Name</p>
@@ -24,7 +37,7 @@ export const ApplicantsListPage = ({ applicantsList }) => {
                             key={applicantIdx}
                             applicantData={applicant}
                             openApplicantModal={setShowApplicantModal}
-                            setActiveApplicant={setCurrentApplicant}
+                            setActiveApplicant={setCurrentApplicantIndex}
                         />
                     )) :
                     <p className="emptyStateText">Currently no applicants. Click "Get new applicant" above to get more</p>

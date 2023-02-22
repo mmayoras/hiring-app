@@ -12,7 +12,7 @@ function App() {
     let newApplicant = await getNewApplicant();
     newApplicant = {
       ...newApplicant,
-      status: 'Draft',
+      status: 'New',
     }
 
     !!newApplicant && setApplicantsList([
@@ -29,7 +29,7 @@ function App() {
               Get new applicant
           </button>
       </div>
-      <ApplicantsListPage applicantsList={applicantsList} />
+      <ApplicantsListPage applicantsList={applicantsList} setApplicantsList={setApplicantsList} />
     </div>
   );
 }
