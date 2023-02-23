@@ -4,7 +4,7 @@ import { ThreeDotsMenu } from '../../components/ThreeDotsMenu';
 
 import './ApplicantRowItem.css';
 
-export const ApplicantRowItem = ({ applicantIndex, applicantData, openApplicantModal }) => {
+export const ApplicantRowItem = ({ applicantIndex, applicantData, openApplicantModal, resetStatus }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { name, picture, status } = applicantData;
     const fullName = !!name ?
@@ -14,6 +14,11 @@ export const ApplicantRowItem = ({ applicantIndex, applicantData, openApplicantM
     const viewDetailsModal = () => {
         setIsMenuOpen(false);
         openApplicantModal(applicantIndex);
+    }
+
+    const resetStatusAndClose = () => {
+        setIsMenuOpen(false);
+        resetStatus(applicantIndex);
     }
 
     return (
@@ -34,10 +39,9 @@ export const ApplicantRowItem = ({ applicantIndex, applicantData, openApplicantM
                     <button className="dropdownOption" onClick={() => viewDetailsModal()}>
                         View details
                     </button>,
-                    <button className="dropdownOption" onClick={() => console.log('Resetting applicant status')}>
-                        Reset status
+                    <button className="dropdownOption" onClick={() => resetStatusAndClose(applicantIndex)}>
+                        Undo decision
                     </button>,
-                    // <button className="dropdownOption" onClick={() => updateMetricAndClose('motor-rpm')}>Motor RPM</button>,
                 ]}
             />
         </div>

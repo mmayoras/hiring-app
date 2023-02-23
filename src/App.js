@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
+import { useLocalStorage } from './hooks/useLocalStorage';
 import { ApplicantsListPage } from './pages/ApplicantsDashboard/ApplicantsListPage';
 import { getNewApplicant } from './utils/api';
 
 import './App.css';
 
 function App() {
-  const [applicantsList, setApplicantsList] = useState([]);
+  const [applicantsList, setApplicantsList] = useLocalStorage('applicants', []);
 
   const getAndSetNewApplicant = async () => {
     let newApplicant = await getNewApplicant();

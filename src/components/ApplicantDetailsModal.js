@@ -21,17 +21,19 @@ export const ApplicantDetailsModal = ({ applicantDetails, close, submit }) => {
                     <div className="notesContainer">
                         <p>Decision notes (optional)</p>
                         <textarea
+                            className="note"
                             value={currentNoteValue}
                             placeholder="Why are you approving or rejecting?"
                             onChange={(event) => setCurrentNoteValue(event.target.value)}
                         />
+                        {notes.length > 0 && <p>Notes log</p>}
                         {notes.length > 0 && notes.map((note, noteIdx) => (
-                            <textarea key={noteIdx}>{note}</textarea>
+                            <textarea key={noteIdx} className="note" value={note} disabled={true} />
                         ))}
                     </div>
                     <div className="actionButtons">
-                        <button onClick={() => submit(false, currentNoteValue)}>Reject</button>
-                        <button onClick={() => submit(true, currentNoteValue)}>Approve</button>
+                        <button className="submit reject" onClick={() => submit(false, currentNoteValue)}>Reject</button>
+                        <button className="submit approve" onClick={() => submit(true, currentNoteValue)}>Approve</button>
                     </div>
                 </div>
             </div>

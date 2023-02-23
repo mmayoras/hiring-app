@@ -49,6 +49,13 @@
   }
   
   .tableBreak {
-    background-color: #A4A8B1;
+    background-color: #000000;
     margin: 0.5rem;
+    height: 1.5px;
+  }
+
+  .rowBreak {
+    background-color: #A4A8B1;
+    margin: 0 0.5rem;
+    opacity: 0.5;
   }

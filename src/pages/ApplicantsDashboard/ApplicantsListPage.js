@@ -32,6 +32,13 @@ export const ApplicantsListPage = ({ applicantsList, setApplicantsList }) => {
         setShowApplicantModal(true);
     }
 
+    const resetApplicantStatus = (applicantIndex) => {
+        const newApplicantList = applicantsList.slice();
+        newApplicantList[applicantIndex].status = 'New';
+
+        setApplicantsList(newApplicantList);
+    }
+
     return (
         <div className="pageContainer">
             {showApplicantModal &&
@@ -49,12 +56,15 @@ export const ApplicantsListPage = ({ applicantsList, setApplicantsList }) => {
                 <hr className="tableBreak" />
                 {applicantsList.length > 0 ? 
                     applicantsList.map((applicant, applicantIdx) => (
-                        <ApplicantRowItem
-                            key={applicantIdx}
-                            applicantIndex={applicantIdx}
-                            applicantData={applicant}
-                            openApplicantModal={openDetailsModal}
-                        />
+                        <div key={applicantIdx}>
+                            <ApplicantRowItem
+                                applicantIndex={applicantIdx}
+                                applicantData={applicant}
+                                openApplicantModal={openDetailsModal}
+                                resetStatus={resetApplicantStatus}
+                            />
+                            <hr className="rowBreak" />
+                        </div>
                     )) :
                     <p className="emptyStateText">
                         Currently no applicants. Click "Get new applicant" above to get more

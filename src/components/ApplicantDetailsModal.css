@@ -31,12 +31,21 @@
 .notesContainer {
     display: flex;
     flex-direction: column;
+    padding: 2rem 0;
+}
+
+.note {
+    margin: 0.5rem 0;
 }
 
 .closeButton {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
 }
 
 .decisionForm {
@@ -48,11 +57,29 @@
 
 .actionButtons {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 2rem;
 }
 
 .mediumImage {
     width: 80px;
+}
+
+.submit {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    min-width: 120px;
+}
+
+.approve {
+    background-color: #3cf74c;
+}
+
+.reject {
+    background-color: #ff5858;
 }
   
