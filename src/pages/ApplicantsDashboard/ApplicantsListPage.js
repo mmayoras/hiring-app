@@ -9,11 +9,27 @@ export const ApplicantsListPage = ({ applicantsList, setApplicantsList }) => {
     const [showApplicantModal, setShowApplicantModal] = useState(false);
     const [currentApplicantIndex, setCurrentApplicantIndex] = useState(0);
 
-    const approveOrRejectApplicantAndClose = (isApproved) => {
+    const approveOrRejectApplicantAndClose = (isApproved, optionalNote) => {
         const newApplicantList = applicantsList.slice();
-        newApplicantList[currentApplicantIndex].status = isApproved ? 'Approved' : 'Rejected';
+        const newApplicantNotes = newApplicantList[currentApplicantIndex].notes.slice();
+
+        if (optionalNote !== '') {
+            newApplicantNotes.push(optionalNote);
+        }
+
+        newApplicantList[currentApplicantIndex] = {
+            ...newApplicantList[currentApplicantIndex],
+            status: isApproved ? 'Approved' : 'Rejected',
+            notes: newApplicantNotes,
+        };
+
         setApplicantsList(newApplicantList);
         setShowApplicantModal(false);
+    }
+
+    const openDetailsModal = (newCurrentIndex) => {
+        setCurrentApplicantIndex(newCurrentIndex);
+        setShowApplicantModal(true);
     }
 
     return (
@@ -35,12 +51,14 @@ export const ApplicantsListPage = ({ applicantsList, setApplicantsList }) => {
                     applicantsList.map((applicant, applicantIdx) => (
                         <ApplicantRowItem
                             key={applicantIdx}
+                            applicantIndex={applicantIdx}
                             applicantData={applicant}
-                            openApplicantModal={setShowApplicantModal}
-                            setActiveApplicant={setCurrentApplicantIndex}
+                            openApplicantModal={openDetailsModal}
                         />
                     )) :
-                    <p className="emptyStateText">Currently no applicants. Click "Get new applicant" above to get more</p>
+                    <p className="emptyStateText">
+                        Currently no applicants. Click "Get new applicant" above to get more
+                    </p>
                 }
             </div>
         </div>

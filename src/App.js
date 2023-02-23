@@ -13,6 +13,7 @@ function App() {
     newApplicant = {
       ...newApplicant,
       status: 'New',
+      notes: [],
     }
 
     !!newApplicant && setApplicantsList([

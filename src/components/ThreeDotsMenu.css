@@ -1,0 +1,43 @@
+.dropdown {
+    position: relative;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+}
+
+.dropdown li {
+    background: none repeat scroll 0 0 #8884d8;
+    height: 7px;
+    width: 7px;
+    line-height: 0px;
+    list-style: none outside none;
+    margin-top: 3px;
+    vertical-align: top;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.menu {
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 8px;
+    padding: 0px;
+    margin: 0 1.5rem;
+}
+
+.menu li {
+    display: flex;
+}
+
+.dropdownOption:hover {
+    background-color: #ffffff
+}
+
+.dropdownOption {
+    width: 100%;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: none;
+}
