@@ -5,13 +5,13 @@ import { formatFullName, formatPhoneNumber } from '../../utils/dataFormatters';
 
 import './ApplicantDetailsModal.css';
 
-interface ApplicantDetailsModal {
+interface ApplicantDetailsModalProps {
     applicantDetails: Applicant;
     close: (shouldClose: boolean) => void;
     submit: (isApproved: boolean, optionalNote: string) => void;
 }
 
-export const ApplicantDetailsModal: React.FC<ApplicantDetailsModal> = ({ applicantDetails, close, submit }) => {
+export const ApplicantDetailsModal: React.FC<ApplicantDetailsModalProps> = ({ applicantDetails, close, submit }) => {
     const [currentNoteValue, setCurrentNoteValue] = useState<string>('');
     const { name, picture, notes, cell, email, dob } = applicantDetails;
     const { age } = dob;
