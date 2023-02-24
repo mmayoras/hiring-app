@@ -1,7 +1,5 @@
-import { useState } from 'react';
-
 import { useLocalStorage } from './hooks/useLocalStorage';
-import { ApplicantsListPage } from './pages/ApplicantsDashboard/ApplicantsListPage';
+import { ApplicantsListPage } from './pages/ApplicantsDashboard/ApplicantListPage/ApplicantsListPage';
 import { getNewApplicant } from './utils/api';
 
 import './App.css';

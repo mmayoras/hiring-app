@@ -1,0 +1,70 @@
+.applicantSquare {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  margin: 2rem;
+  padding: 0.5rem;
+  width: 225px;
+  min-height: 225px;
+  border: 1px solid #8884d8;
+  border-radius: 20px;
+}
+
+.rowDetails {
+  display: flex;
+  align-items: center;
+}
+
+.nameContainer {
+  display: flex;
+  align-items: center;
+  width: 225px;
+}
+
+.nameInfo {
+  padding: 0 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+.thumbnailImage {
+  height: auto;
+}
+
+.zoomIcon {
+  position: absolute;
+  width: 24px;
+  top: 10px;
+  right: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.resetStatusIcon {
+  height: 20px;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.statusContainer {
+  display: flex;
+  align-items: center;
+}
+
+.pillContainer {
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 0 1rem;
+}
+
+.approved {
+  color: #06c258;
+  border-color: #06c258;
+}
+
+.rejected {
+  color: #ff2c2c;
+  border-color: #ff2c2c;
+}

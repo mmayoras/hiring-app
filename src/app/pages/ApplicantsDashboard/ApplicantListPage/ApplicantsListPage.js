@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { ApplicantRowItem } from './ApplicantRowItem';
-import { ApplicantDetailsModal } from '../../components/ApplicantDetailsModal';
+import { ApplicantRowItem } from '../ApplicantRowItem/ApplicantRowItem';
+import { ApplicantDetailsModal } from '../../../components/ApplicantDetailsModal/ApplicantDetailsModal';
 
 import './ApplicantListPage.css';
 
@@ -24,12 +24,18 @@ export const ApplicantsListPage = ({ applicantsList, setApplicantsList }) => {
         };
 
         setApplicantsList(newApplicantList);
-        setShowApplicantModal(false);
+        closeDetailsModal();
     }
 
     const openDetailsModal = (newCurrentIndex) => {
+        document.querySelector('body').style.overflowY = 'hidden';
         setCurrentApplicantIndex(newCurrentIndex);
         setShowApplicantModal(true);
+    }
+
+    const closeDetailsModal = () => {
+        document.querySelector('body').style.overflowY = 'scroll';
+        setShowApplicantModal(false);
     }
 
     const resetApplicantStatus = (applicantIndex) => {
@@ -44,28 +50,23 @@ export const ApplicantsListPage = ({ applicantsList, setApplicantsList }) => {
             {showApplicantModal &&
                 <ApplicantDetailsModal
                     applicantDetails={applicantsList[currentApplicantIndex]}
-                    close={setShowApplicantModal}
+                    close={closeDetailsModal}
                     submit={approveOrRejectApplicantAndClose}
                 />
             }
-            <div className="tableContainer">
-                <div className="tableHeader">
-                    <p className="columnTitle">Name</p>
-                    <p className="columnTitle">Status</p>
-                </div>
-                <hr className="tableBreak" />
+            <div className="listContainer">
                 {applicantsList.length > 0 ? 
-                    applicantsList.map((applicant, applicantIdx) => (
-                        <div key={applicantIdx}>
+                    applicantsList.map((applicant, applicantIdx) => {
+                        return (
                             <ApplicantRowItem
+                                key={applicantIdx}
                                 applicantIndex={applicantIdx}
                                 applicantData={applicant}
                                 openApplicantModal={openDetailsModal}
                                 resetStatus={resetApplicantStatus}
                             />
-                            <hr className="rowBreak" />
-                        </div>
-                    )) :
+                        );
+                    }) :
                     <p className="emptyStateText">
                         Currently no applicants. Click "Get new applicant" above to get more
                     </p>

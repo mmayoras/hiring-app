@@ -16,11 +16,23 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     background-color: white;
     max-width: calc(100% - 264px);
-    min-height: calc(100% - 264px);
+    height: calc(100% - 132px);
     position: relative;
     padding: 2rem;
+}
+
+.decisionForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.applicantHeader {
+    display: flex;
+    align-items: center;
 }
   
 .applicantDetails {
@@ -28,14 +40,44 @@
     flex-direction: column;
 }
 
+.extraInfo {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0 0;
+}
+
+.infoFieldHeader {
+    min-width: 75px;
+}
+
+.noMargin {
+    margin: 0;
+}
+
+.bottomMargin {
+    margin: 0 0 0.5rem;
+}
+
+.leftMargin {
+    margin: 0 0 0 1rem;
+}
+
 .notesContainer {
     display: flex;
     flex-direction: column;
-    padding: 2rem 0;
+    padding: 1rem 0;
+}
+
+.notesLogContainer {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
 }
 
 .note {
+    min-height: 24px;
     margin: 0.5rem 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .closeButton {
@@ -46,13 +88,6 @@
     font-size: 18px;
     border: none;
     cursor: pointer;
-}
-
-.decisionForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
 }
 
 .actionButtons {
@@ -76,10 +111,10 @@
 }
 
 .approve {
-    background-color: #3cf74c;
+    background-color: #06c258;
 }
 
 .reject {
-    background-color: #ff5858;
+    background-color: #ff2c2c;
 }
   
