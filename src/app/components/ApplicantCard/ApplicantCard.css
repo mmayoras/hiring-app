@@ -1,4 +1,4 @@
-.applicantSquare {
+.applicantCard {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -10,11 +10,6 @@
   min-height: 225px;
   border: 1px solid #8884d8;
   border-radius: 20px;
-}
-
-.rowDetails {
-  display: flex;
-  align-items: center;
 }
 
 .nameContainer {

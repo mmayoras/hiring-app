@@ -1,10 +1,10 @@
-import { formatFullName } from '../../../utils/dataFormatters';
-import xMark from '../../../../assets/x-mark-circle.png';
-import zoomIcon from '../../../../assets/zoom.png';
+import { formatFullName } from '../../utils/dataFormatters';
+import xMark from '../../../assets/x-mark-circle.png';
+import zoomIcon from '../../../assets/zoom.png';
 
-import './ApplicantRowItem.css';
+import './ApplicantCard.css';
 
-export const ApplicantRowItem = ({
+export const ApplicantCard = ({
     applicantIndex,
     applicantData,
     openApplicantModal,
@@ -23,7 +23,7 @@ export const ApplicantRowItem = ({
     }
 
     return (
-        <div className="applicantSquare">
+        <div className="applicantCard">
             <img className="zoomIcon" src={zoomIcon} onClick={() => viewDetailsModal()} alt="View Details Icon" />
             <img className="thumbnailImage" src={picture && picture.medium} alt="Applicant" />
             <h3 className="nameInfo">{fullName}</h3>

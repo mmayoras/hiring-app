@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import { ApplicantRowItem } from '../ApplicantRowItem/ApplicantRowItem';
-import { ApplicantDetailsModal } from '../../../components/ApplicantDetailsModal/ApplicantDetailsModal';
+import { ApplicantCard } from '../../components/ApplicantCard/ApplicantCard';
+import { ApplicantDetailsModal } from '../../components/ApplicantDetailsModal/ApplicantDetailsModal';
 
 import './ApplicantListPage.css';
 
-export const ApplicantsListPage = ({ applicantsList, setApplicantsList }) => {
+export const ApplicantListPage = ({ applicantsList, setApplicantsList }) => {
     const [showApplicantModal, setShowApplicantModal] = useState(false);
     const [currentApplicantIndex, setCurrentApplicantIndex] = useState(0);
 
@@ -58,7 +58,7 @@ export const ApplicantsListPage = ({ applicantsList, setApplicantsList }) => {
                 {applicantsList.length > 0 ? 
                     applicantsList.map((applicant, applicantIdx) => {
                         return (
-                            <ApplicantRowItem
+                            <ApplicantCard
                                 key={applicantIdx}
                                 applicantIndex={applicantIdx}
                                 applicantData={applicant}

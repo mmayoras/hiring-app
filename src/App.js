@@ -1,5 +1,7 @@
+import { useState } from 'react';
+
 import { useLocalStorage } from './hooks/useLocalStorage';
-import { ApplicantListPage } from './pages/ApplicantListPage/ApplicantListPage';
+import { ApplicantsListPage } from './app/pages/ApplicantListPage/ApplicantListPage';
 import { getNewApplicant } from './utils/api';
 
 import './App.css';
@@ -29,7 +31,7 @@ function App() {
               Get new applicant
           </button>
       </div>
-      <ApplicantListPage applicantsList={applicantsList} setApplicantsList={setApplicantsList} />
+      <ApplicantsListPage applicantsList={applicantsList} setApplicantsList={setApplicantsList} />
     </div>
   );
 }
