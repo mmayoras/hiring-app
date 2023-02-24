@@ -1,16 +1,22 @@
 import { useState } from 'react';
 
+import { Applicant } from '../../models/Applicant';
 import { formatFullName, formatPhoneNumber } from '../../utils/dataFormatters';
 
 import './ApplicantDetailsModal.css';
 
-export const ApplicantDetailsModal = ({ applicantDetails, close, submit }) => {
-    const [currentNoteValue, setCurrentNoteValue] = useState('');
+interface ApplicantDetailsModal {
+    applicantDetails: Applicant;
+    close: (shouldClose: boolean) => void;
+    submit: (isApproved: boolean, optionalNote: string) => void;
+}
+
+export const ApplicantDetailsModal: React.FC<ApplicantDetailsModal> = ({ applicantDetails, close, submit }) => {
+    const [currentNoteValue, setCurrentNoteValue] = useState<string>('');
     const { name, picture, notes, cell, email, dob } = applicantDetails;
     const { age } = dob;
-    const fullName = !!name ?
-        formatFullName(name.title, name.first, name.last)
-        : 'No name provided';
+
+    const fullName = formatFullName(name.title, name.first, name.last);
     const cleanPhoneNumber = formatPhoneNumber(cell);
 
     return (
@@ -47,7 +53,7 @@ export const ApplicantDetailsModal = ({ applicantDetails, close, submit }) => {
                 </div>
                 {notes.length > 0 && <h3 className="noMargin">Historical notes log:</h3>}
                 <div className="notesLogContainer">
-                    {notes.length > 0 && notes.map((note, noteIdx) => (
+                    {notes.length > 0 && notes.map((note: string, noteIdx: number) => (
                         <textarea key={noteIdx} className="note" value={note} disabled={true} />
                     ))}
                 </div>

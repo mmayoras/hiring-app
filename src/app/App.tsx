@@ -1,4 +1,5 @@
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { Applicant } from './models/Applicant';
 import { ApplicantListPage } from './pages/ApplicantListPage/ApplicantListPage';
 import { getNewApplicant } from './utils/api';
 
@@ -8,17 +9,14 @@ function App() {
   const [applicantsList, setApplicantsList] = useLocalStorage('applicants', []);
 
   const getAndSetNewApplicant = async () => {
-    let newApplicant = await getNewApplicant();
-    newApplicant = {
-      ...newApplicant,
-      status: 'New',
-      notes: [],
+    let newApplicant: Applicant | null = await getNewApplicant();
+
+    if (newApplicant !== null) {
+      newApplicant.status = 'New';
+      newApplicant.notes = [];
     }
 
-    !!newApplicant && setApplicantsList([
-        ...applicantsList,
-        newApplicant,
-    ]);
+    setApplicantsList([...applicantsList, newApplicant]);
   }
 
   return (

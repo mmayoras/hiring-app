@@ -1,10 +1,19 @@
+import { Applicant } from '../../models/Applicant';
 import { formatFullName } from '../../utils/dataFormatters';
+
 import xMark from '../../../assets/x-mark-circle.png';
 import zoomIcon from '../../../assets/zoom.png';
 
 import './ApplicantCard.css';
 
-export const ApplicantCard = ({
+interface ApplicantCardProps {
+    applicantIndex: number;
+    applicantData: Applicant;
+    openApplicantModal: (currentIndex: number) => void;
+    resetStatus: (currentIndex: number) => void;
+}
+
+export const ApplicantCard: React.FC<ApplicantCardProps> = ({
     applicantIndex,
     applicantData,
     openApplicantModal,
@@ -32,7 +41,7 @@ export const ApplicantCard = ({
                 {status !== 'New' &&
                     <img
                         className="resetStatusIcon"
-                        src={xMark} onClick={() => resetStatusAndClose(applicantIndex)}
+                        src={xMark} onClick={() => resetStatusAndClose()}
                         alt="Reset Status Icon"
                     />
                 }

@@ -2,16 +2,23 @@ import { useState } from 'react';
 
 import { ApplicantCard } from '../../components/ApplicantCard/ApplicantCard';
 import { ApplicantDetailsModal } from '../../components/ApplicantDetailsModal/ApplicantDetailsModal';
+import { Applicant } from '../../models/Applicant';
+import { lockScrolling, unlockScrolling } from '../../utils/pageScrolling';
 
 import './ApplicantListPage.css';
 
-export const ApplicantListPage = ({ applicantsList, setApplicantsList }) => {
-    const [showApplicantModal, setShowApplicantModal] = useState(false);
-    const [currentApplicantIndex, setCurrentApplicantIndex] = useState(0);
+interface ApplicantListPageProps {
+    applicantsList: Applicant[];
+    setApplicantsList: (applicants: Applicant[]) => void;
+}
 
-    const approveOrRejectApplicantAndClose = (isApproved, optionalNote) => {
-        const newApplicantList = applicantsList.slice();
-        const newApplicantNotes = newApplicantList[currentApplicantIndex].notes.slice();
+export const ApplicantListPage: React.FC<ApplicantListPageProps> = ({ applicantsList, setApplicantsList }) => {
+    const [showApplicantModal, setShowApplicantModal] = useState<boolean>(false);
+    const [currentApplicantIndex, setCurrentApplicantIndex] = useState<number>(0);
+
+    const approveOrRejectApplicantAndClose = (isApproved: boolean, optionalNote: string) => {
+        const newApplicantList: Applicant[] = applicantsList.slice();
+        const newApplicantNotes: string[] = newApplicantList[currentApplicantIndex].notes.slice();
 
         if (optionalNote !== '') {
             newApplicantNotes.push(optionalNote);
@@ -27,18 +34,18 @@ export const ApplicantListPage = ({ applicantsList, setApplicantsList }) => {
         closeDetailsModal();
     }
 
-    const openDetailsModal = (newCurrentIndex) => {
-        document.querySelector('body').style.overflowY = 'hidden';
+    const openDetailsModal = (newCurrentIndex: number) => {
+        lockScrolling();
         setCurrentApplicantIndex(newCurrentIndex);
         setShowApplicantModal(true);
     }
 
     const closeDetailsModal = () => {
-        document.querySelector('body').style.overflowY = 'scroll';
+        unlockScrolling();
         setShowApplicantModal(false);
     }
 
-    const resetApplicantStatus = (applicantIndex) => {
+    const resetApplicantStatus = (applicantIndex: number) => {
         const newApplicantList = applicantsList.slice();
         newApplicantList[applicantIndex].status = 'New';
 
