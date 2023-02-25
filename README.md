@@ -21,13 +21,12 @@ It correctly bundles React in production mode and optimizes the build for the be
 Thanks for taking the time to review my submission.
 
 I assumed the user should start with an empty state and would wanna add applicants for editing one at a time.
-Otherwise, there wasn't anything else I felt unclear about with the requirements or no other assumptions made.
+Otherwise, there wasn't anything else I felt unclear about with the requirements / no other assumptions made.
 
 Due to the requirements being fairly straightforward I wanted to keep things simple.
 With this in mind, the libraries I chose to use for my app were:
-    - Fetch for making GET request to Random User Generator API
-    - Typescript for strongly typing my components / functions
-    - Jest / React-Testing-Library as specified in the instructions although I would've chosen to use these for automated
-        unit tests anyways
-    - CSS since the app doesn't have too many individual components and in order to move quickly
-        - In the past, I've used Emotion/SASS extensively for larger applications
+- Fetch for making GET request to Random User Generator API
+- Typescript for strongly typing my components / functions
+- Jest / React-Testing-Library as specified in the instructions although I would've chosen to use these for automated unit tests anyways
+- CSS since the app doesn't have too many individual components and in order to move quickly
+    - In the past, I've used Emotion/SASS extensively for larger applications
