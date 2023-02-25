@@ -4,12 +4,14 @@
   justify-content: space-evenly;
   align-items: center;
   position: relative;
-  margin: 2rem;
-  padding: 0.5rem;
+  background-color: white;
+  margin: 3rem auto;
+  padding: 1rem;
   width: 225px;
   min-height: 225px;
   border: 1px solid #8884d8;
   border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
 }
 
 .nameContainer {
@@ -55,11 +57,11 @@
 }
 
 .approved {
-  color: #06c258;
-  border-color: #06c258;
+  color: #2e8540;
+  border-color: #2e8540;
 }
 
 .rejected {
-  color: #ff2c2c;
-  border-color: #ff2c2c;
+  color: #e31c3d;
+  border-color: #e31c3d;
 }

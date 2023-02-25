@@ -33,16 +33,24 @@ export const ApplicantCard: React.FC<ApplicantCardProps> = ({
 
     return (
         <div className="applicantCard">
-            <img className="zoomIcon" src={zoomIcon} onClick={() => viewDetailsModal()} alt="View Details Icon" />
-            <img className="thumbnailImage" src={picture && picture.medium} alt="Applicant" />
+            <input
+                className="zoomIcon"
+                type="image"
+                src={zoomIcon}
+                onClick={() => viewDetailsModal()}
+                alt="View details icon"
+            />
+            <img className="thumbnailImage" src={picture && picture.medium} alt="Applicant thumbnail" />
             <h3 className="nameInfo">{fullName}</h3>
             <div className="statusContainer">  
                 <div className={`pillContainer ${status.toLowerCase()}`}>{status}</div>
                 {status !== 'New' &&
-                    <img
+                    <input
                         className="resetStatusIcon"
-                        src={xMark} onClick={() => resetStatusAndClose()}
-                        alt="Reset Status Icon"
+                        type="image"
+                        src={xMark}
+                        onClick={() => resetStatusAndClose()}
+                        alt="Reset status icon"
                     />
                 }
             </div>

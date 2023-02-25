@@ -1,3 +1,7 @@
+export type ApplicantResponse = {
+    results: Applicant[];
+}
+
 export type Applicant = {
     name: {
         title: string;
@@ -31,5 +35,41 @@ export const emptyApplicant: Applicant = {
         age: '',
     },
     status: 'New',
+    notes: [],
+};
+
+export const testApprovedApplicant: Applicant = {
+    name: {
+        title: '',
+        first: '',
+        last: '',
+    },
+    picture: {
+        medium: '',
+    },
+    cell: '',
+    email: '',
+    dob: {
+        age: '',
+    },
+    status: 'Approved',
+    notes: [],
+};
+
+export const testRejectedApplicant: Applicant = {
+    name: {
+        title: '',
+        first: '',
+        last: '',
+    },
+    picture: {
+        medium: '',
+    },
+    cell: '',
+    email: '',
+    dob: {
+        age: '',
+    },
+    status: 'Rejected',
     notes: [],
 };

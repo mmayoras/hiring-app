@@ -6,25 +6,38 @@ import { formatFullName, formatPhoneNumber } from '../../utils/dataFormatters';
 import './ApplicantDetailsModal.css';
 
 interface ApplicantDetailsModalProps {
-    applicantDetails: Applicant;
-    close: (shouldClose: boolean) => void;
+    applicantIndex: number;
+    applicantData: Applicant;
+    close: () => void;
     submit: (isApproved: boolean, optionalNote: string) => void;
+    resetStatus: (applicantIndex: number) => void;
 }
 
-export const ApplicantDetailsModal: React.FC<ApplicantDetailsModalProps> = ({ applicantDetails, close, submit }) => {
+export const ApplicantDetailsModal: React.FC<ApplicantDetailsModalProps> = ({
+    applicantIndex,
+    applicantData,
+    close,
+    submit,
+    resetStatus,
+}) => {
     const [currentNoteValue, setCurrentNoteValue] = useState<string>('');
-    const { name, picture, notes, cell, email, dob } = applicantDetails;
+    const { name, picture, notes, cell, email, dob, status } = applicantData;
     const { age } = dob;
 
     const fullName = formatFullName(name.title, name.first, name.last);
     const cleanPhoneNumber = formatPhoneNumber(cell);
 
+    const resetStatusAndClose = () => {
+        resetStatus(applicantIndex);
+        close();
+    }
+
     return (
         <div className="modal">
             <div className="detailsContainer">
-                <button className="closeButton" onClick={() => close(false)}>X</button>
+                <button className="closeButton" onClick={() => close()}>X</button>
                 <div className="applicantHeader">
-                    <img className="mediumImage" src={picture && picture.medium} alt="Applicant" />
+                    <img className="mediumImage" src={picture && picture.medium} alt="Applicant medium" />
                     <h1 className="leftMargin">{fullName}</h1>
                 </div>
                 <div className="applicantDetails">
@@ -58,8 +71,15 @@ export const ApplicantDetailsModal: React.FC<ApplicantDetailsModalProps> = ({ ap
                     ))}
                 </div>
                 <div className="actionButtons">
-                    <button className="submit reject" onClick={() => submit(false, currentNoteValue)}>Reject</button>
-                    <button className="submit approve" onClick={() => submit(true, currentNoteValue)}>Approve</button>
+                    {(status === 'Rejected' || status === 'Approved') &&
+                        <button className="submit reset" onClick={() => resetStatusAndClose()}>Reset</button>
+                    }
+                    {(status !== 'Rejected') &&
+                        <button className="submit reject" onClick={() => submit(false, currentNoteValue)}>Reject</button>
+                    }
+                    {(status !== 'Approved') &&
+                        <button className="submit approve" onClick={() => submit(true, currentNoteValue)}>Approve</button>
+                    }
                 </div>
             </div>
         </div>

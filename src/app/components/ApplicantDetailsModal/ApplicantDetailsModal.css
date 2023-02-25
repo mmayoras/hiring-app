@@ -16,11 +16,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background-color: white;
-    min-width: calc(100% - 396px);
-    height: calc(100% - 132px);
+    background-color: #fafafa;
+    height: calc(100% - 175px);
     position: relative;
-    padding: 2rem;
+    padding: 3rem;
 }
 
 .decisionForm {
@@ -93,6 +92,7 @@
     display: flex;
     justify-content: space-around;
     padding: 2rem;
+    flex-wrap: wrap;
 }
 
 .mediumImage {
@@ -106,14 +106,19 @@
     border: none;
     cursor: pointer;
     border-radius: 12px;
-    min-width: 120px;
+    min-width: 150px;
 }
 
 .approve {
-    background-color: #06c258;
+    background-color: #2e8540;
 }
 
 .reject {
-    background-color: #ff2c2c;
+    background-color: #e31c3d;
+}
+
+.reset {
+    color: #e31c3d;
+    border: 1px solid #e31c3d;
 }
   

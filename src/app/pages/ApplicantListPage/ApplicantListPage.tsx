@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { ApplicantCard } from '../../components/ApplicantCard/ApplicantCard';
 import { ApplicantDetailsModal } from '../../components/ApplicantDetailsModal/ApplicantDetailsModal';
+import { EMPTY_STATE_COPY } from '../../constants/appConstants';
 import { Applicant } from '../../models/Applicant';
 import { lockScrolling, unlockScrolling } from '../../utils/pageScrolling';
 
@@ -56,9 +57,11 @@ export const ApplicantListPage: React.FC<ApplicantListPageProps> = ({ applicants
         <div className="pageContainer">
             {showApplicantModal &&
                 <ApplicantDetailsModal
-                    applicantDetails={applicantsList[currentApplicantIndex]}
+                    applicantIndex={currentApplicantIndex}
+                    applicantData={applicantsList[currentApplicantIndex]}
                     close={closeDetailsModal}
                     submit={approveOrRejectApplicantAndClose}
+                    resetStatus={resetApplicantStatus}
                 />
             }
             <div className="listContainer">
@@ -74,9 +77,7 @@ export const ApplicantListPage: React.FC<ApplicantListPageProps> = ({ applicants
                             />
                         );
                     }) :
-                    <p className="emptyStateText">
-                        Currently no applicants. Click "Get new applicant" above to get more
-                    </p>
+                    <p className="emptyStateText">{EMPTY_STATE_COPY}</p>
                 }
             </div>
         </div>
