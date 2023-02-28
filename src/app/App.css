@@ -4,3 +4,28 @@
   min-height: 100vh;
   background-color: #fafafa;
 }
+
+.pageBanner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: #444A59;
+  height: 75px;
+  padding: 0.5rem 2rem;
+  flex-wrap: wrap;
+}
+
+.pageHeader {
+  margin: 0;
+}
+  
+.getNewButton {
+  background-color: white;
+  color: #8884d8;
+  padding: 16px;
+  font-size: 16px;
+  border: 1px solid #8884d8;
+  border-radius: 12px;
+  cursor: pointer;
+}
