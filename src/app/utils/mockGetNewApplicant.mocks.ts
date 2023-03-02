@@ -19,11 +19,11 @@ export const mockApplicant: Applicant = {
     notes: [],
 }
 
-export const mockApplicantResponse: ApplicantResponse = {
+const mockApplicantResponse: ApplicantResponse = {
     results: [mockApplicant],
 }
 
-export const mockEmptyResponse: ApplicantResponse = {
+const mockEmptyResponse: ApplicantResponse = {
     results: [],
 }
 
